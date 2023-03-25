@@ -33,15 +33,16 @@ public class BookingController {
     @PostMapping("/return")
     public ResponseEntity<ReturnTicketRequestDTO> refundTicket(@RequestBody TicketToken token) {
 
-        Ticket returnedTicket = ticketService.refundTicket(token.getToken());
+        Ticket returnedTicket = ticketService.refundTicket(token.token());
 
         ReturnTicketRequestDTO returnTicketRequestDTO = new ReturnTicketRequestDTO(returnedTicket.getSeat());
 
         return new ResponseEntity<>(returnTicketRequestDTO, HttpStatus.OK);
     }
 
-    @PostMapping(value = {"/stats", "/stats/{password}"})
-    public ResponseEntity<Statistics> stats(@RequestParam(value = "password", required = false) String password) {
+    @PostMapping(value = {"/stats/", "/stats/{password}"})
+    public ResponseEntity<Statistics>
+    stats(@RequestParam(value = "password", required = false) String password) {
         if(password != null && password.equals("super_secret")) {
             Statistics statistics = ticketService.getStatistics();
             return new ResponseEntity<>(statistics, HttpStatus.OK);

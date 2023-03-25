@@ -14,7 +14,7 @@ import java.util.UUID;
 @Service
 public class TicketService {
 
-    private Cinema cinema = new Cinema(Constant.MAX_ROW, Constant.MAX_COLUMN);
+    private final Cinema cinema = new Cinema(Constant.MAX_ROW, Constant.MAX_COLUMN);
 
     public Cinema getSeats() {
         return cinema;
@@ -57,9 +57,7 @@ public class TicketService {
 
         List<Seat> seats = cinema.getAvailableSeats();
 
-        Optional<Seat> seatOpt = seats.stream().filter(s -> s.getRow() == seat.getRow() && s.getColumn() == seat.getColumn()).findFirst();
-
-        return seatOpt;
+        return seats.stream().filter(s -> s.getRow() == seat.getRow() && s.getColumn() == seat.getColumn()).findFirst();
     }
 
     public Ticket searchTicket(UUID token) {
@@ -74,7 +72,7 @@ public class TicketService {
 
     public Statistics getStatistics() {
         int currentIncome = cinema.getPurchasedTicket().stream().mapToInt(ticket -> ticket.getSeat().getPrice()).sum();
-        long numberOfAvailableSeats = cinema.getAvailableSeats().stream().filter(seat -> seat.isFree()).count();
+        long numberOfAvailableSeats = cinema.getAvailableSeats().stream().filter(Seat::isFree).count();
         int numberOfPurchasedTickets = cinema.getPurchasedTicket().size();
 
         return new Statistics(currentIncome, numberOfAvailableSeats, numberOfPurchasedTickets);
