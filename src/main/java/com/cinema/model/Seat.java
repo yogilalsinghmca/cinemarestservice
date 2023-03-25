@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Objects;
 
 public class Seat {
-    private int row;
-    private int column;
-    private int price;
+    private final int row;
+    private final int column;
+    private final int price;
 
     private boolean isFree;
     public Seat(@JsonProperty("row") int row, @JsonProperty("column") int column) {
@@ -53,10 +53,7 @@ public class Seat {
         if (getRow() != seat.getRow()) {
             return false;
         }
-        if (getColumn() != seat.getColumn()) {
-            return false;
-        }
-        return true;
+        return getColumn() == seat.getColumn();
     }
 
     @Override

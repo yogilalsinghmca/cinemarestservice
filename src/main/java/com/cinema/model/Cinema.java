@@ -13,8 +13,8 @@ public class Cinema {
     private int totalRows;
     @JsonProperty("total_columns")
     private int totalColumns;
-   private List<Seat> AVAILABLE_SEATS;
-    private List<Ticket> PURCHASED_TICKET;
+   private final List<Seat> AVAILABLE_SEATS;
+   private final List<Ticket> PURCHASED_TICKET;
 
     public Cinema(int total_rows, int total_columns) {
         this.totalRows = total_rows;

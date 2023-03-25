@@ -1,0 +1,210 @@
+{
+	"info": {
+		"_postman_id": "fcce5b3f-4a8f-42ff-85c7-540d98065b59",
+		"name": "Cinema Rest API Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1341463"
+	},
+	"item": [
+		{
+			"name": "Get all seats",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:28852/seats/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "28852",
+					"path": [
+						"seats",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "purchase ticket",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"row\": 1,\n        \"column\": 2\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:28852/purchase/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "28852",
+					"path": [
+						"purchase",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "purchase ticket Negative Column Value Test",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"row\": 1,\n        \"column\": 2\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:28852/purchase/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "28852",
+					"path": [
+						"purchase",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "purchase ticket Negative column Value Test",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"row\": 1,\n        \"column\": 2\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:28852/purchase/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "28852",
+					"path": [
+						"purchase",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get statistics",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"row\": 1,\n        \"column\": 2\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:28852/stats/?password=super_secret",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "28852",
+					"path": [
+						"stats",
+						""
+					],
+					"query": [
+						{
+							"key": "password",
+							"value": "super_secret"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "return a ticket",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"token\": \"4649b482-ed57-4aa0-9929-2955890a25a6\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:28852/return/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "28852",
+					"path": [
+						"return",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Wrong token Test",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"token\": \"4649b482-ed57-4aa0-9929-2955890a25a\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:28852/return/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "28852",
+					"path": [
+						"return",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
